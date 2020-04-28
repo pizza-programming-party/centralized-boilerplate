@@ -1,6 +1,6 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://gitlab.com/pizza-programming-party/package-boilerplate/issues"
   },
-  "homepage": "https://gitlab.com/pizza-programming-party/package-boilerplate#readme"
+  "homepage": "https://gitlab.com/pizza-programming-party/package-boilerplate#readme",
+  "dependencies": {
+    "tslint-config-standard": "^9.0.0"
+  }
 }
