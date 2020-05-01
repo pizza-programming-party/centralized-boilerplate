@@ -1,10 +1,11 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "echo \"Hi there, from the @pizza-programming-party/package-boilerplate postinstall script.\""
   },
   "repository": {
     "type": "git",
