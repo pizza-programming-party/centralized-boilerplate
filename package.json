@@ -1,7 +1,7 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
   "version": "4.0.2",
-  "description": "",
+  "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
