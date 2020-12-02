@@ -19,5 +19,8 @@
   "homepage": "https://gitlab.com/pizza-programming-party/package-boilerplate#readme",
   "dependencies": {
     "tslint-config-standard": "^9.0.0"
+  },
+  "bin": {
+    "hello-test": "bin/test.js"
   }
 }
