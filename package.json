@@ -1,6 +1,6 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,8 @@
   "homepage": "https://gitlab.com/pizza-programming-party/package-boilerplate#readme",
   "dependencies": {
     "tslint-config-standard": "^9.0.0"
+  },
+  "bin": {
+    "hello-test": "bin/test.js"
   }
 }
