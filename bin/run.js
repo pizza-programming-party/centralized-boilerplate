@@ -15,7 +15,7 @@ console.log('=====')
 console.log('We will copy over a .gitignore file for you now...')
 
 
-const gitignorePath = path.resolve(sourcePath, '.gitignore')
+const gitignorePath = path.resolve(sourcePath, 'gitignore')
 
 console.log(gitignorePath)
 
