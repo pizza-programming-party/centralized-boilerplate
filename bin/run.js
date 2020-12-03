@@ -8,13 +8,14 @@ console.log('__dirname: ' + __dirname)
 console.log('__filename: ' + __filename)
 console.log('process.cwd(): ' + process.cwd())
 
+const sourcePath = path.resolve(__dirname, '..', 'assets')
 const destinationPath = process.cwd()
 
 console.log('=====')
 console.log('We will copy over a .gitignore file for you now...')
 
 
-const gitignorePath = path.resolve(__dirname, '..', '.gitignore')
+const gitignorePath = path.resolve(sourcePath, '.gitignore')
 
 console.log(gitignorePath)
 

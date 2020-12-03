@@ -1,6 +1,6 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {
