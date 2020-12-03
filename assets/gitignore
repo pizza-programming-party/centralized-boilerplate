@@ -1,8 +1,6 @@
-# This file was loaded from @pizza-programming-party/package-boilerplate
+# This file is managed by @pizza-programming-party/package-boilerplate
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
-
-# test
 
 # compiled output
 /build
@@ -37,7 +35,6 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-.npmrc
 
 # System Files
 .DS_Store
