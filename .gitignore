@@ -1,11 +1,15 @@
+# This file was loaded from @pizza-programming-party/package-boilerplate
+
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
 /build
 /dist
+
 # dependencies
 /node_modules
 .npmrc
+
 # IDEs and editors
 /.idea
 .project
@@ -31,6 +35,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+.npmrc
 
 # System Files
 .DS_Store

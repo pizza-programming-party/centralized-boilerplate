@@ -1,6 +1,6 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
-  "version": "4.0.5",
+  "version": "4.1.0",
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {
@@ -21,6 +21,7 @@
     "tslint-config-standard": "^9.0.0"
   },
   "bin": {
-    "hello-test": "bin/test.js"
+    "hello-test": "bin/test.js",
+    "hello-run": "bin/run.js"
   }
 }
