@@ -17,9 +17,7 @@
     "url": "https://gitlab.com/pizza-programming-party/package-boilerplate/issues"
   },
   "homepage": "https://gitlab.com/pizza-programming-party/package-boilerplate#readme",
-  "dependencies": {
-    "tslint-config-standard": "^9.0.0"
-  },
+  "dependencies": {},
   "bin": {
     "hello-test": "bin/test.js",
     "hello-run": "bin/run.js"
