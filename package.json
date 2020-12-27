@@ -4,7 +4,6 @@
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "echo \"Hi there, from the @pizza-programming-party/package-boilerplate postinstall script.\""
   },
   "repository": {
