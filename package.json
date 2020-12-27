@@ -4,7 +4,7 @@
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "echo \"Hi there, from the @pizza-programming-party/package-boilerplate postinstall script.\""
+    "postinstall": "echo \"Hi there, from the @pizza-programming-party/package-boilerplate postinstall script.\" && node ./bin/run.js"
   },
   "repository": {
     "type": "git",
