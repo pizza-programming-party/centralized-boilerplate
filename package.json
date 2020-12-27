@@ -1,11 +1,9 @@
 {
   "name": "@pizza-programming-party/package-boilerplate",
-  "version": "5.1.2",
+  "version": "5.1.3",
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
-  "scripts": {
-    "postinstall": "echo \"A message from @pizza-programming-party/package-boilerplate postinstall script:\" && node ./bin/run.js"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+ssh://git@gitlab.com/pizza-programming-party/package-boilerplate.git"
