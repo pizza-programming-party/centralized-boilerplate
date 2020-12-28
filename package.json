@@ -4,19 +4,19 @@
   "description": "Package-boilerplate contains setup stuff for NPM packages.",
   "main": "index.js",
   "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@gitlab.com/pizza-programming-party/package-boilerplate.git"
-  },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://gitlab.com/pizza-programming-party/package-boilerplate/issues"
-  },
-  "homepage": "https://gitlab.com/pizza-programming-party/package-boilerplate#readme",
   "dependencies": {},
   "bin": {
     "hello-test": "bin/test.js",
     "hello-run": "bin/run.js"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pizza-programming-party/package-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pizza-programming-party/package-boilerplate/issues"
+  },
+  "homepage": "https://github.com/pizza-programming-party/package-boilerplate#readme"
 }
