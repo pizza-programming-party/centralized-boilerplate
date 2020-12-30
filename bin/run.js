@@ -27,6 +27,12 @@ copy(
 
 copy(
   blacklist,
+  { basePath: sourcePath, filepath: [ 'gitlab-ci.yml' ] },
+  { basePath: destinationPath, filepath: [ '.gitlab-ci.yml' ] }
+)
+
+copy(
+  blacklist,
   { basePath: sourcePath, filepath: [ 'vscode', 'extensions.json' ] },
   { basePath: destinationPath, filepath: [ '.vscode', 'extensions.json' ] }
 )
