@@ -1,4 +1,4 @@
 [
-  [ ".gitignore" ],
+  [ ".gitlab-ci.yml" ],
   [ "folder", "something2.txt"]
 ]
