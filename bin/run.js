@@ -9,19 +9,84 @@ console.log('I am here to setup your stuff.')
 const sourcePath = path.resolve(__dirname, '..', 'assets')
 const destinationPath = process.cwd()
 
-console.log('* .gitignore...')
-const gitignoreContent = fs.readFileSync(path.resolve(sourcePath, 'gitignore'), 'utf8')
-fs.writeFileSync(path.resolve(destinationPath, '.gitignore'), gitignoreContent, 'utf8', 'w')
+const blacklist = getBlacklist(destinationPath)
 
-console.log('* .editorconfig...')
-const editorconfigContent = fs.readFileSync(path.resolve(sourcePath, 'editorconfig'), 'utf8')
-fs.writeFileSync(path.resolve(destinationPath, '.editorconfig'), editorconfigContent, 'utf8', 'w')
+console.log('This is the contents of your blacklist', blacklist)
 
-console.log('* .vscode/extensions.json...')
-const vsCodeExtensionsConfig = fs.readFileSync(path.resolve(sourcePath, 'vscode', 'extensions.json'), 'utf8')
-if (!fs.existsSync(path.resolve(destinationPath, '.vscode'))) {
-  fs.mkdirSync(path.resolve(destinationPath, '.vscode'), )
-}
-fs.writeFileSync(path.resolve(destinationPath, '.vscode', 'extensions.json'), vsCodeExtensionsConfig, 'utf8', 'w')
+copy(
+  blacklist,
+  { basePath: sourcePath, filepath: [ 'gitignore' ] },
+  { basePath: destinationPath, filepath: [ '.gitignore' ] }
+)
+
+copy(
+  blacklist,
+  { basePath: sourcePath, filepath: [ 'editorconfig' ] },
+  { basePath: destinationPath, filepath: [ '.editorconfig' ] }
+)
+
+copy(
+  blacklist,
+  { basePath: sourcePath, filepath: [ 'vscode', 'extensions.json' ] },
+  { basePath: destinationPath, filepath: [ '.vscode', 'extensions.json' ] }
+)
 
 console.log('done!')
+
+function getBlacklist(destinationPath) {
+  const fullPath = getPath({
+    basePath: destinationPath,
+    filepath: [ 'centralized-boilerplate.json' ]
+  })
+  try {
+    return JSON.parse(read(fullPath))
+  } catch (error) {
+    console.log('No blacklist found, none will be used.')
+    return {}
+  }
+}
+
+function copy(blacklist, source, destination) {
+  console.log(destination.filepath)
+
+  for (let i = 0; i < blacklist.length; i++) {
+    const entry = blacklist[i]
+    if (JSON.stringify(entry) === JSON.stringify(destination.filepath)) {
+      console.log('is in the blacklist, ignored.')
+      return
+    }
+  }
+
+  const sourcePath = getPath(source)
+  const content = read(sourcePath)
+  ensurePathExists(destination)
+  const destinationPath = getPath(destination)
+  write(destinationPath, content)
+}
+
+function read(fullPath) {
+  return fs.readFileSync(fullPath, 'utf8')
+}
+
+function ensurePathExists(config) {
+  for (let i = 0; i < config.filepath.length; i++) {
+    const parts = config.filepath.slice(0, i)
+
+    const tempPath = getPath({
+      basePath: config.basePath,
+      filepath: parts
+    })
+
+    if (!fs.existsSync(tempPath)) {
+      fs.mkdirSync(tempPath)
+    }
+  }
+}
+
+function write(fullPath, content) {
+  return fs.writeFileSync(fullPath, content, 'utf8', 'w')
+}
+
+function getPath(config) {
+  return path.resolve(config.basePath, ...config.filepath)
+}
