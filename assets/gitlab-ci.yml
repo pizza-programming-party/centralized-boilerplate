@@ -1,0 +1,59 @@
+# This file is managed by @pizza-programming-party/package-boilerplate
+
+image: node:10.16.3
+
+stages:
+  - install
+  - build
+  - test
+  - publish
+
+cache:
+  paths:
+    - node_modules/
+
+install:
+  stage: install
+  script:
+    - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+    - npm install
+  except:
+    - main
+
+lint:
+  stage: build
+  script:
+    - npm run lint
+  except:
+    - main
+
+build:
+  stage: build
+  script:
+    - npm run build
+  except:
+    - main
+
+unit:
+  stage: test
+  script:
+    - npm run test
+  except:
+    - main
+
+e2e:
+  stage: test
+  script:
+    - npm run e2e
+  except:
+    - main
+
+publish:
+  stage: publish
+  script:
+    - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+    - npm install
+    - npm run build
+    - npm publish
+  only:
+    - main
