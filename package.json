@@ -1,7 +1,7 @@
 {
   "name": "centralized-boilerplate",
-  "version": "1.0.0",
-  "description": "Package-boilerplate contains setup stuff for NPM packages.",
+  "version": "1.1.0",
+  "description": "A library for managing re-useable boilerplate files.",
   "main": "index.js",
   "scripts": {},
   "author": "",
