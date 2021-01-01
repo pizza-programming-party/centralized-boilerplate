@@ -14,14 +14,20 @@ function run(sourceBasePath, list) {
 
   const blacklist = getBlacklist(destinationPath)
 
-  console.log('This is the contents of your blacklist', blacklist)
-
   for (let i = 0; i < list.length; i++) {
     const entry = list[i]
+    if (!shouldCopy(blacklist, entry)) {
+      continue
+    }
     copy(
-      blacklist,
-      { basePath: sourcePath, filepath: entry.source },
-      { basePath: destinationPath, filepath: entry.destination }
+      {
+        basePath: sourcePath,
+        filepath: entry.source
+      },
+      {
+        basePath: destinationPath,
+        filepath: entry.destination
+      }
     )
   }
 
@@ -41,22 +47,23 @@ function getBlacklist(destinationPath) {
   }
 }
 
-function copy(blacklist, source, destination) {
+function copy(source, destination) {
   console.log(destination.filepath)
-
-  for (let i = 0; i < blacklist.length; i++) {
-    const entry = blacklist[i]
-    if (JSON.stringify(entry) === JSON.stringify(destination.filepath)) {
-      console.log('is in the blacklist, ignored.')
-      return
-    }
-  }
-
   const sourcePath = getPath(source)
   const content = read(sourcePath)
   ensurePathExists(destination)
   const destinationPath = getPath(destination)
   write(destinationPath, content)
+}
+
+function shouldCopy(blacklist, destination) {
+  for (let i = 0; i < blacklist.length; i++) {
+    const entry = blacklist[i]
+    if (JSON.stringify(entry) === JSON.stringify(destination.filepath)) {
+      return false
+    }
+  }
+  return true
 }
 
 function read(fullPath) {
