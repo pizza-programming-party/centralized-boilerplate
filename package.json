@@ -10,12 +10,15 @@
   "bin": {
     "hello-run": "bin/run.js"
   },
+  "directories": {
+    "example": "examples"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pizza-programming-party/package-boilerplate.git"
+    "url": "git+https://github.com/pizza-programming-party/centralized-boilerplate.git"
   },
   "bugs": {
-    "url": "https://github.com/pizza-programming-party/package-boilerplate/issues"
+    "url": "https://github.com/pizza-programming-party/centralized-boilerplate/issues"
   },
-  "homepage": "https://github.com/pizza-programming-party/package-boilerplate#readme"
+  "homepage": "https://github.com/pizza-programming-party/centralized-boilerplate#readme"
 }
