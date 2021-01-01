@@ -37,7 +37,7 @@ function getBlacklist(destinationPath) {
     return JSON.parse(read(fullPath))
   } catch (error) {
     console.log('No blacklist found, none will be used.')
-    return {}
+    return []
   }
 }
 
