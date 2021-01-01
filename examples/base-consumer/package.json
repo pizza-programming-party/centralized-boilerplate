@@ -1,14 +1,14 @@
 {
   "name": "centralized-base-boilerplate-consumer-example",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is an example",
   "main": "index.js",
   "scripts": {
-    "boil": "node ./node_modules/centralized-base-boilerplate-example/bin/run.js"
+    "boil": "./node_modules/centralized-base-boilerplate-example/bin/boil"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "centralized-base-boilerplate-example": "^1.0.0"
+    "centralized-base-boilerplate-example": "^1.0.3"
   }
 }
