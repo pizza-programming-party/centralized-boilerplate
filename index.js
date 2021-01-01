@@ -7,7 +7,10 @@ function run(sourceBasePath, list) {
   console.log('I am here to setup your stuff.')
 
   const sourcePath = path.resolve(sourceBasePath, 'assets')
+  console.log('sourcePath', sourcePath)
+
   const destinationPath = process.cwd()
+  console.log('destination', destinationPath)
 
   const blacklist = getBlacklist(destinationPath)
 
