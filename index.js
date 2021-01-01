@@ -2,11 +2,11 @@
 const path = require('path')
 const fs = require('fs')
 
-function run(list) {
+function run(sourceBasePath, list) {
   console.log('Guten tag, it is me, Mr Boiler.')
   console.log('I am here to setup your stuff.')
 
-  const sourcePath = path.resolve(__dirname, 'assets')
+  const sourcePath = path.resolve(sourceBasePath, 'assets')
   const destinationPath = process.cwd()
 
   const blacklist = getBlacklist(destinationPath)
