@@ -58,13 +58,9 @@ function copy(source, destination) {
 }
 
 function shouldCopy(blacklist, destination) {
-  for (let i = 0; i < blacklist.length; i++) {
-    const entry = blacklist[i]
-    if (lodash.isEqual(entry, destination.filepath)) {
-      return false
-    }
-  }
-  return true
+  return lodash.some(blacklist, (entry) => {
+    return lodash.isEqual(entry, destination.filepath)
+  })
 }
 
 function read(fullPath) {
