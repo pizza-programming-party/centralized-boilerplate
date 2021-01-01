@@ -1,6 +1,7 @@
 
 const path = require('path')
 const fs = require('fs')
+const lodash = require('lodash')
 
 function run(sourceBasePath, list) {
   console.log('Guten tag, it is me, Mr Boiler.')
@@ -59,7 +60,7 @@ function copy(source, destination) {
 function shouldCopy(blacklist, destination) {
   for (let i = 0; i < blacklist.length; i++) {
     const entry = blacklist[i]
-    if (JSON.stringify(entry) === JSON.stringify(destination.filepath)) {
+    if (lodash.isEqual(entry, destination.filepath)) {
       return false
     }
   }
