@@ -1,7 +1,9 @@
+#! /usr/bin/env node
 
 const r = require('../index')
+const path = require('path')
 
-r.run([
+r.run(path.resolve(__dirname, '..'), [
   {
     source: [ 'gitignore' ],
     destination: [ '.gitignore' ]
