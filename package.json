@@ -7,9 +7,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {},
-  "bin": {
-    "hello-run": "bin/run.js"
-  },
   "directories": {
     "example": "examples"
   },
