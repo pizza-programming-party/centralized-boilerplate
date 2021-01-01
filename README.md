@@ -53,3 +53,4 @@ This project allows users to create a tool that allows them to centrally control
       [ ".gitignore" ]
     ]
     ```
+1. Boom! You're done!
