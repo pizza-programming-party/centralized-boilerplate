@@ -5,7 +5,7 @@ This project allows users to create a tool that allows them to centrally control
 1. Create an npm package. The recommended naming style is `@scope/centralized-x-boilerplate`. Where `x` is something like `package`, `service`, or something else. It depends how you conceptually group your packages.
 1. Add this package as a dependency.
 1. Add an `assets` folder and put cool things in it. Note: files that begin with a period are not published by NPM, so you should not name them like that, but this library allows you to rename files they are copied.
-1. Create a file like this `./bin/boil`, but this code in there:
+1. Create a file like this `./bin/boil`, put this code in there:
     ```
     #! /usr/bin/env node
 
