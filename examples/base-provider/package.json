@@ -1,6 +1,6 @@
 {
   "name": "centralized-base-boilerplate-provider-example",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "This is an example",
   "bin": {
     "boil": "./bin/boil"
@@ -8,6 +8,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "centralized-boilerplate": "^2.0.3"
+    "centralized-boilerplate": "^2.0.6"
   }
 }
