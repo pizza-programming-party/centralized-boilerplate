@@ -1,2 +1,7 @@
 
 /node_modules
+
+# ignore the files from assets for fun.
+
+/file0.txt
+/folder/file1.txt
