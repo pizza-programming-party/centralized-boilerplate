@@ -2,7 +2,7 @@ This project allows users to centrally control their boilerplate stuff. There ar
 
 #  To create your own
 
-1. Create an npm package. The recommended naming style is `@scope/centralized-x-boilerplate`. Where `x` is something like `package`, `service`, or something else. It depends how you conceptually group your packages.
+1. Create an npm package. The recommended naming style is `@scope/centralized-x-boilerplate`. Where `x` is something like `package`, `service`, or something else. It depends how you conceptually group your packages. You might want to maintain multiple packages, depending on your groupings.
 1. Add this package as a dependency.
 1. Add an `assets` folder and put cool things in it. Note: files that begin with a period are not published by NPM, so you should not name them like as so, but this library allows you to rename files when they are copied.
 1. Create a file `./bin/boil`, put this code in there:
