@@ -13,7 +13,9 @@ interface Location {
   filepath: string[]
 }
 
-type Blacklist = string[][]
+type Blacklist = Blacklist_v1
+
+type Blacklist_v1 = string[][]
 
 export function run (
   sourceBasePath: string,
