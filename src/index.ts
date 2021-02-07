@@ -13,9 +13,15 @@ interface Location {
   filepath: string[]
 }
 
-type Blacklist = Blacklist_v1
+type Blacklist =
+  | Blacklist_v1
+  | Blacklist_v2
 
 type Blacklist_v1 = string[][]
+
+interface Blacklist_v2 {
+  blacklist: string[][]
+}
 
 export function run (
   sourceBasePath: string,
@@ -81,8 +87,13 @@ function shouldCopy (
   blacklist: Blacklist,
   command: Configuration
 ): boolean {
-  for (let i = 0; i < blacklist.length; i++) {
-    const entry = blacklist[i]
+
+  const content = lodash.isArray(blacklist)
+    ? blacklist
+    : blacklist.blacklist
+
+  for (let i = 0; i < content.length; i++) {
+    const entry = content[i]
     if (lodash.isEqual(entry, command.destination)) {
       return false
     }
