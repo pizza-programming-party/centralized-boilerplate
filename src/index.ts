@@ -13,13 +13,13 @@ interface Location {
   filepath: string[]
 }
 
-type Blacklist =
-  | Blacklist_v1
-  | Blacklist_v2
+type Configuration =
+  | Configuration_v1
+  | Configuration_v2
 
-type Blacklist_v1 = string[][]
+type Configuration_v1 = string[][]
 
-interface Blacklist_v2 {
+interface Configuration_v2 {
   blacklist: string[][]
 }
 
@@ -33,12 +33,12 @@ export function run (
   const destinationPath = process.cwd()
   console.log('destination', destinationPath)
 
-  const blacklist = getBlacklist(destinationPath)
-  console.log('blacklist', JSON.stringify(blacklist, null, 2))
+  const configuration = getConfiguration(destinationPath)
+  console.log('configuration', JSON.stringify(configuration, null, 2))
 
   for (let i = 0; i < list.length; i++) {
     const entry = list[i]
-    if (!shouldCopy(blacklist, entry)) {
+    if (!shouldCopy(configuration, entry)) {
       continue
     }
     copy(
@@ -56,9 +56,9 @@ export function run (
   console.log('done!')
 }
 
-function getBlacklist (
+function getConfiguration (
   destinationPath: string
-): Blacklist {
+): Configuration {
   const fullPath = getPath({
     basePath: destinationPath,
     filepath: ['centralized-boilerplate.json']
@@ -66,7 +66,7 @@ function getBlacklist (
   try {
     return JSON.parse(read(fullPath))
   } catch (error) {
-    console.log('No blacklist found, none will be used.')
+    console.log('No configuration found, none will be used.')
     return []
   }
 }
@@ -84,13 +84,12 @@ function copy (
 }
 
 function shouldCopy (
-  blacklist: Blacklist,
+  configuration: Configuration,
   command: MoveCommand
 ): boolean {
-
-  const content = lodash.isArray(blacklist)
-    ? blacklist
-    : blacklist.blacklist
+  const content = lodash.isArray(configuration)
+    ? configuration
+    : configuration.blacklist
 
   for (let i = 0; i < content.length; i++) {
     const entry = content[i]
