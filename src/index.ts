@@ -108,13 +108,13 @@ function read (
 }
 
 function ensurePathExists (
-  config: Location
+  location: Location
 ): void {
-  for (let i = 0; i < config.filepath.length; i++) {
-    const parts = config.filepath.slice(0, i)
+  for (let i = 0; i < location.filepath.length; i++) {
+    const parts = location.filepath.slice(0, i)
 
     const tempPath = getPath({
-      basePath: config.basePath,
+      basePath: location.basePath,
       filepath: parts
     })
 
@@ -139,10 +139,10 @@ function write (
 }
 
 function getPath (
-  config: Location
+  location: Location
 ): string {
   return path.resolve(
-    config.basePath,
-    ...config.filepath
+    location.basePath,
+    ...location.filepath
   )
 }
