@@ -3,7 +3,7 @@ import * as path from 'path'
 import * as fs from 'fs'
 import * as lodash from 'lodash'
 
-export interface Configuration {
+export interface MoveCommand {
   source: string[]
   destination: string[]
 }
@@ -25,7 +25,7 @@ interface Blacklist_v2 {
 
 export function run (
   sourceBasePath: string,
-  list: Configuration[]
+  list: MoveCommand[]
 ): void {
   const sourcePath = path.resolve(sourceBasePath, 'assets')
   console.log('sourcePath', sourcePath)
@@ -85,7 +85,7 @@ function copy (
 
 function shouldCopy (
   blacklist: Blacklist,
-  command: Configuration
+  command: MoveCommand
 ): boolean {
 
   const content = lodash.isArray(blacklist)
