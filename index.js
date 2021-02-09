@@ -3,7 +3,7 @@ const path = require('path')
 const fs = require('fs')
 const lodash = require('lodash')
 
-function run(sourceBasePath, list) {
+function run (sourceBasePath, list) {
   console.log('Guten tag, it is me, Mr Boiler.')
   console.log('I am here to setup your stuff.')
 
@@ -35,10 +35,10 @@ function run(sourceBasePath, list) {
   console.log('done!')
 }
 
-function getBlacklist(destinationPath) {
+function getBlacklist (destinationPath) {
   const fullPath = getPath({
     basePath: destinationPath,
-    filepath: [ 'centralized-boilerplate.json' ]
+    filepath: ['centralized-boilerplate.json']
   })
   try {
     return JSON.parse(read(fullPath))
@@ -48,7 +48,7 @@ function getBlacklist(destinationPath) {
   }
 }
 
-function copy(source, destination) {
+function copy (source, destination) {
   console.log(destination.filepath)
   const sourcePath = getPath(source)
   const content = read(sourcePath)
@@ -57,7 +57,7 @@ function copy(source, destination) {
   write(destinationPath, content)
 }
 
-function shouldCopy(blacklist, command) {
+function shouldCopy (blacklist, command) {
   for (let i = 0; i < blacklist.length; i++) {
     const entry = blacklist[i]
     if (lodash.isEqual(entry, command.destination)) {
@@ -67,11 +67,11 @@ function shouldCopy(blacklist, command) {
   return true
 }
 
-function read(fullPath) {
+function read (fullPath) {
   return fs.readFileSync(fullPath, 'utf8')
 }
 
-function ensurePathExists(config) {
+function ensurePathExists (config) {
   for (let i = 0; i < config.filepath.length; i++) {
     const parts = config.filepath.slice(0, i)
 
@@ -86,11 +86,11 @@ function ensurePathExists(config) {
   }
 }
 
-function write(fullPath, content) {
+function write (fullPath, content) {
   return fs.writeFileSync(fullPath, content, 'utf8', 'w')
 }
 
-function getPath(config) {
+function getPath (config) {
   return path.resolve(config.basePath, ...config.filepath)
 }
 
