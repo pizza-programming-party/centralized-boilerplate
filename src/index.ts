@@ -1,9 +1,24 @@
 
-const path = require('path')
-const fs = require('fs')
-const lodash = require('lodash')
+import * as path from 'path'
+import * as fs from 'fs'
+import * as lodash from 'lodash'
 
-function run (sourceBasePath, list) {
+export interface Configuration {
+  source: string[]
+  destination: string[]
+}
+
+interface Location {
+  basePath: string
+  filepath: string[]
+}
+
+type Blacklist = string[][]
+
+export function run (
+  sourceBasePath: string,
+  list: Configuration[]
+): void {
   console.log('Guten tag, it is me, Mr Boiler.')
   console.log('I am here to setup your stuff.')
 
@@ -35,7 +50,9 @@ function run (sourceBasePath, list) {
   console.log('done!')
 }
 
-function getBlacklist (destinationPath) {
+function getBlacklist (
+  destinationPath: string
+): Blacklist {
   const fullPath = getPath({
     basePath: destinationPath,
     filepath: ['centralized-boilerplate.json']
@@ -48,7 +65,10 @@ function getBlacklist (destinationPath) {
   }
 }
 
-function copy (source, destination) {
+function copy (
+  source: Location,
+  destination: Location
+): void {
   console.log(destination.filepath)
   const sourcePath = getPath(source)
   const content = read(sourcePath)
@@ -57,7 +77,10 @@ function copy (source, destination) {
   write(destinationPath, content)
 }
 
-function shouldCopy (blacklist, command) {
+function shouldCopy (
+  blacklist: Blacklist,
+  command: Configuration
+): boolean {
   for (let i = 0; i < blacklist.length; i++) {
     const entry = blacklist[i]
     if (lodash.isEqual(entry, command.destination)) {
@@ -67,11 +90,15 @@ function shouldCopy (blacklist, command) {
   return true
 }
 
-function read (fullPath) {
+function read (
+  fullPath: string
+): string {
   return fs.readFileSync(fullPath, 'utf8')
 }
 
-function ensurePathExists (config) {
+function ensurePathExists (
+  config: Location
+): void {
   for (let i = 0; i < config.filepath.length; i++) {
     const parts = config.filepath.slice(0, i)
 
@@ -86,12 +113,25 @@ function ensurePathExists (config) {
   }
 }
 
-function write (fullPath, content) {
-  return fs.writeFileSync(fullPath, content, 'utf8', 'w')
+function write (
+  fullPath: string,
+  content: string
+): void {
+  return fs.writeFileSync(
+    fullPath,
+    content,
+    {
+      encoding: 'utf8',
+      flag: 'w'
+    }
+  )
 }
 
-function getPath (config) {
-  return path.resolve(config.basePath, ...config.filepath)
+function getPath (
+  config: Location
+): string {
+  return path.resolve(
+    config.basePath,
+    ...config.filepath
+  )
 }
-
-module.exports = { run }
