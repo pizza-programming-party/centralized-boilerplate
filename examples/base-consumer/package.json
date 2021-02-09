@@ -4,11 +4,11 @@
   "description": "This is an example",
   "main": "index.js",
   "scripts": {
-    "boil": "./node_modules/centralized-base-boilerplate-provider-example/bin/boil"
+    "boil": "./node_modules/centralized-base-boilerplate-provider-example/bin/boil.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "centralized-base-boilerplate-provider-example": "^1.0.6"
+    "centralized-base-boilerplate-provider-example": "^1.0.7"
   }
 }
