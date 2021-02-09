@@ -19,9 +19,6 @@ export function run (
   sourceBasePath: string,
   list: Configuration[]
 ): void {
-  console.log('Guten tag, it is me, Mr Boiler.')
-  console.log('I am here to setup your stuff.')
-
   const sourcePath = path.resolve(sourceBasePath, 'assets')
   console.log('sourcePath', sourcePath)
 
@@ -29,6 +26,7 @@ export function run (
   console.log('destination', destinationPath)
 
   const blacklist = getBlacklist(destinationPath)
+  console.log('blacklist', JSON.stringify(blacklist, null, 2))
 
   for (let i = 0; i < list.length; i++) {
     const entry = list[i]
