@@ -26,6 +26,7 @@ export function run (
   console.log('destination', destinationPath)
 
   const blacklist = getBlacklist(destinationPath)
+  console.log('blacklist', JSON.stringify(blacklist, null, 2))
 
   for (let i = 0; i < list.length; i++) {
     const entry = list[i]
