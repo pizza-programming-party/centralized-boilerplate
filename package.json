@@ -19,9 +19,6 @@
     "ts-standard": "^10.0.0",
     "typescript": "^3.9.7"
   },
-  "directories": {
-    "example": "examples"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/pizza-programming-party/centralized-boilerplate.git"
@@ -29,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/pizza-programming-party/centralized-boilerplate/issues"
   },
-  "homepage": "https://github.com/pizza-programming-party/centralized-boilerplate#readme"
+  "homepage": "https://github.com/pizza-programming-party/centralized-boilerplate#readme",
+  "directories": {
+    "example": "examples"
+  }
 }
