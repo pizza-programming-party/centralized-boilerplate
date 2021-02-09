@@ -1,13 +1,13 @@
 {
   "name": "centralized-base-boilerplate-provider-example",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "This is an example",
   "bin": {
-    "boil": "./bin/boil"
+    "boil": "./bin/boil.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "centralized-boilerplate": "^2.0.6"
+    "centralized-boilerplate": "^2.0.7"
   }
 }
