@@ -12,6 +12,7 @@ describe('hello', () => {
       '/home/whatever/project',
       [
         {
+          action: 'full-text-replace',
           source: ['gitignore'],
           destination: ['.gitignore']
         }
@@ -23,6 +24,7 @@ describe('hello', () => {
 
     expect(output).toEqual([
       {
+        action: 'full-text-replace',
         source: {
           basePath: '/home/whatever/centralized-x-boilerplate/assets',
           filepath: ['gitignore']
