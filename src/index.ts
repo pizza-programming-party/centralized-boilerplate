@@ -14,13 +14,14 @@ export function run (
   list: MoveCommand[]
 ): void {
   const sourcePath = path.resolve(sourceBasePath, 'assets')
-  console.log('sourcePath', sourcePath)
-
   const destinationPath = process.cwd()
-  console.log('destination', destinationPath)
-
   const configuration = getConfiguration(destinationPath)
-  console.log('configuration', JSON.stringify(configuration, null, 2))
+
+  log(
+    sourcePath,
+    destinationPath,
+    configuration
+  )
 
   const entries = prepare(
     sourcePath,
@@ -49,6 +50,16 @@ function getConfiguration (
     console.log('No configuration found, none will be used.')
     return []
   }
+}
+
+function log (
+  sourcePath: string,
+  destinationPath: string,
+  configuration: Object
+): void {
+  console.log('sourcePath', sourcePath)
+  console.log('destination', destinationPath)
+  console.log('configuration', JSON.stringify(configuration, null, 2))
 }
 
 function copy (
