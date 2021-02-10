@@ -95,7 +95,7 @@ function jsonMerge (
 
     const result = lodash.assign(currentContent, additionalContent)
 
-    write(destinationPath, result)
+    write(destinationPath, JSON.stringify(result, null, 2))
   } catch (error) {
     console.log('Error while trying to merge json.')
     console.log(error)

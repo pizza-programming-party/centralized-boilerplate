@@ -6,9 +6,9 @@
   "scripts": {
     "boil": "./node_modules/centralized-base-boilerplate-provider-example/bin/boil.js"
   },
-  "author": "",
+  "author": "Engineering",
   "license": "ISC",
   "devDependencies": {
-    "centralized-base-boilerplate-provider-example": "^1.0.7"
+    "centralized-base-boilerplate-provider-example": "^1.0.9"
   }
 }
