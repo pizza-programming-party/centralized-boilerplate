@@ -1,18 +1,13 @@
 
 import * as path from 'path'
 import * as fs from 'fs'
-import * as lodash from 'lodash'
 
 import {
   Configuration,
-  MoveCommand
+  MoveCommand,
+  Location,
+  prepare
 } from './engine'
-
-interface Location {
-  basePath: string
-  filepath: string[]
-}
-
 
 export function run (
   sourceBasePath: string,
@@ -27,22 +22,16 @@ export function run (
   const configuration = getConfiguration(destinationPath)
   console.log('configuration', JSON.stringify(configuration, null, 2))
 
-  for (let i = 0; i < list.length; i++) {
-    const entry = list[i]
-    if (!shouldCopy(configuration, entry)) {
-      continue
-    }
-    copy(
-      {
-        basePath: sourcePath,
-        filepath: entry.source
-      },
-      {
-        basePath: destinationPath,
-        filepath: entry.destination
-      }
-    )
-  }
+  const entries = prepare(
+    sourcePath,
+    destinationPath,
+    list,
+    configuration
+  )
+
+  entries.map((entry) => {
+    copy(entry.source, entry.destination)
+  })
 
   console.log('done!')
 }
@@ -72,23 +61,6 @@ function copy (
   ensurePathExists(destination)
   const destinationPath = getPath(destination)
   write(destinationPath, content)
-}
-
-function shouldCopy (
-  configuration: Configuration,
-  command: MoveCommand
-): boolean {
-  const content = lodash.isArray(configuration)
-    ? configuration
-    : configuration.blacklist
-
-  for (let i = 0; i < content.length; i++) {
-    const entry = content[i]
-    if (lodash.isEqual(entry, command.destination)) {
-      return false
-    }
-  }
-  return true
 }
 
 function read (
