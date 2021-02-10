@@ -2,7 +2,7 @@
 import * as lodash from 'lodash'
 
 export interface MoveCommand {
-  action: 'full-text-replace'
+  action: 'full-text-replace' | 'json-merge'
   source: string[]
   destination: string[]
 }
@@ -19,7 +19,7 @@ interface Configuration_v2 {
 
 export interface SubsystemMoveCommand {
   source: Location
-  action: 'full-text-replace'
+  action: 'full-text-replace' | 'json-merge'
   destination: Location
 }
 

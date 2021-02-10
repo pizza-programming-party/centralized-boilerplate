@@ -1,6 +1,7 @@
 
 import * as path from 'path'
 import * as fs from 'fs'
+import * as lodash from 'lodash'
 
 import {
   Configuration,
@@ -33,6 +34,8 @@ export function run (
   entries.map((entry) => {
     if (entry.action === 'full-text-replace') {
       copy(entry.source, entry.destination)
+    } else if (entry.action === 'json-merge') {
+      jsonMerge(entry.source, entry.destination)
     }
   })
 
@@ -74,6 +77,31 @@ function copy (
   ensurePathExists(destination)
   const destinationPath = getPath(destination)
   write(destinationPath, content)
+}
+
+function jsonMerge (
+  source: Location,
+  destination: Location
+): void {
+
+  try {
+    console.log(destination.filepath)
+
+    const destinationPath = getPath(destination)
+    const currentContent = JSON.parse(read(destinationPath))
+
+    const sourcePath = getPath(source)
+    const additionalContent = JSON.parse(read(sourcePath))
+
+    const result = lodash.assign(currentContent, additionalContent)
+
+    write(destinationPath, result)
+  } catch (error) {
+    console.log('Error while trying to merge json.')
+    console.log(error)
+    console.log('skipping...')
+  }
+
 }
 
 function read (
