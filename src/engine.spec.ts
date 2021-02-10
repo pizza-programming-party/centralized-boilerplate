@@ -4,9 +4,7 @@ import {
 } from './engine'
 
 describe('hello', () => {
-
   it('test', () => {
-
     const output = prepare(
       '/home/whatever/centralized-x-boilerplate/assets',
       '/home/whatever/project',
@@ -36,5 +34,4 @@ describe('hello', () => {
       }
     ])
   })
-
 })

@@ -2,7 +2,7 @@
 import * as lodash from 'lodash'
 
 export interface MoveCommand {
-  action: 'full-text-replace',
+  action: 'full-text-replace'
   source: string[]
   destination: string[]
 }

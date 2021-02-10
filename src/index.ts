@@ -31,7 +31,9 @@ export function run (
   )
 
   entries.map((entry) => {
-    copy(entry.source, entry.destination)
+    if (entry.action === 'full-text-replace') {
+      copy(entry.source, entry.destination)
+    }
   })
 
   console.log('done!')
