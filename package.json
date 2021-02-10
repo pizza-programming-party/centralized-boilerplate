@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rm -rf dist && tsc",
-    "lint": "ts-standard --project ./tsconfig.json"
+    "lint": "ts-standard --project ./tsconfig.json",
+    "test": "npm run build && jasmine dist/**/*.spec.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,8 +15,10 @@
     "lodash": "^4.17.20"
   },
   "devDependencies": {
+    "@types/jasmine": "^3.6.3",
     "@types/lodash": "^4.14.168",
     "@types/node": "^12.19.16",
+    "jasmine": "^3.6.4",
     "ts-standard": "^10.0.0",
     "typescript": "^3.9.7"
   },

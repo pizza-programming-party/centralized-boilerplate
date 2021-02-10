@@ -1,56 +1,45 @@
 
 import * as path from 'path'
 import * as fs from 'fs'
-import * as lodash from 'lodash'
 
-export interface Configuration {
-  source: string[]
-  destination: string[]
-}
-
-interface Location {
-  basePath: string
-  filepath: string[]
-}
-
-type Blacklist = string[][]
+import {
+  Configuration,
+  MoveCommand,
+  Location,
+  prepare
+} from './engine'
 
 export function run (
   sourceBasePath: string,
-  list: Configuration[]
+  list: MoveCommand[]
 ): void {
   const sourcePath = path.resolve(sourceBasePath, 'assets')
-  console.log('sourcePath', sourcePath)
-
   const destinationPath = process.cwd()
-  console.log('destination', destinationPath)
+  const configuration = getConfiguration(destinationPath)
 
-  const blacklist = getBlacklist(destinationPath)
-  console.log('blacklist', JSON.stringify(blacklist, null, 2))
+  log(
+    sourcePath,
+    destinationPath,
+    configuration
+  )
 
-  for (let i = 0; i < list.length; i++) {
-    const entry = list[i]
-    if (!shouldCopy(blacklist, entry)) {
-      continue
-    }
-    copy(
-      {
-        basePath: sourcePath,
-        filepath: entry.source
-      },
-      {
-        basePath: destinationPath,
-        filepath: entry.destination
-      }
-    )
-  }
+  const entries = prepare(
+    sourcePath,
+    destinationPath,
+    list,
+    configuration
+  )
+
+  entries.map((entry) => {
+    copy(entry.source, entry.destination)
+  })
 
   console.log('done!')
 }
 
-function getBlacklist (
+function getConfiguration (
   destinationPath: string
-): Blacklist {
+): Configuration {
   const fullPath = getPath({
     basePath: destinationPath,
     filepath: ['centralized-boilerplate.json']
@@ -58,9 +47,19 @@ function getBlacklist (
   try {
     return JSON.parse(read(fullPath))
   } catch (error) {
-    console.log('No blacklist found, none will be used.')
+    console.log('No configuration found, none will be used.')
     return []
   }
+}
+
+function log (
+  sourcePath: string,
+  destinationPath: string,
+  configuration: Object
+): void {
+  console.log('sourcePath', sourcePath)
+  console.log('destination', destinationPath)
+  console.log('configuration', JSON.stringify(configuration, null, 2))
 }
 
 function copy (
@@ -75,19 +74,6 @@ function copy (
   write(destinationPath, content)
 }
 
-function shouldCopy (
-  blacklist: Blacklist,
-  command: Configuration
-): boolean {
-  for (let i = 0; i < blacklist.length; i++) {
-    const entry = blacklist[i]
-    if (lodash.isEqual(entry, command.destination)) {
-      return false
-    }
-  }
-  return true
-}
-
 function read (
   fullPath: string
 ): string {
@@ -95,13 +81,13 @@ function read (
 }
 
 function ensurePathExists (
-  config: Location
+  location: Location
 ): void {
-  for (let i = 0; i < config.filepath.length; i++) {
-    const parts = config.filepath.slice(0, i)
+  for (let i = 0; i < location.filepath.length; i++) {
+    const parts = location.filepath.slice(0, i)
 
     const tempPath = getPath({
-      basePath: config.basePath,
+      basePath: location.basePath,
       filepath: parts
     })
 
@@ -126,10 +112,10 @@ function write (
 }
 
 function getPath (
-  config: Location
+  location: Location
 ): string {
   return path.resolve(
-    config.basePath,
-    ...config.filepath
+    location.basePath,
+    ...location.filepath
   )
 }
