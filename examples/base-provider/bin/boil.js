@@ -5,15 +5,23 @@ const path = require('path')
 
 r.run(path.resolve(__dirname, '..'), [
   {
+    action: 'full-text-replace',
     source: ['file0.txt'],
     destination: ['file0.txt']
   },
   {
+    action: 'full-text-replace',
     source: ['folder', 'file1.txt'],
     destination: ['folder', 'file1.txt']
   },
   {
+    action: 'full-text-replace',
     source: ['file2.txt'],
     destination: ['file2.txt']
+  },
+  {
+    action: 'json-merge',
+    source: ['package.json'],
+    destination: ['package.json']
   }
 ])
