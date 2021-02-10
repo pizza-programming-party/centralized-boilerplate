@@ -3,25 +3,16 @@ import * as path from 'path'
 import * as fs from 'fs'
 import * as lodash from 'lodash'
 
-export interface MoveCommand {
-  source: string[]
-  destination: string[]
-}
+import {
+  Configuration,
+  MoveCommand
+} from './engine'
 
 interface Location {
   basePath: string
   filepath: string[]
 }
 
-type Configuration =
-  | Configuration_v1
-  | Configuration_v2
-
-type Configuration_v1 = string[][]
-
-interface Configuration_v2 {
-  blacklist: string[][]
-}
 
 export function run (
   sourceBasePath: string,
