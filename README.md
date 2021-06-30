@@ -1,3 +1,7 @@
+# Introduction
+
+Welcome to the future. I'm glad you've made it. Take your shoes off and grab a warm cup of hot chocolate and blanket, and sit down, only if you perfer, of course.
+
 This project allows users to centrally control their boilerplate stuff. There are two sides to this, the side that provides the boilerplate, and the side that consumes the boilerplate. You can view examples in the examples folder.
 
 #  To create your own
