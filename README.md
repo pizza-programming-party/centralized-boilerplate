@@ -11,18 +11,18 @@ Here is a list of cool, pre-made boilerplate:
 # How to use
 If you're just getting familiar with this concept, then this is probably the right section for you.
 
-1. Add the package as a dev dependency. In the following example, it will be called `centralized-boilerplate.something` but you should replace this with a specific package.
+1. Add the package as a dev dependency. In the following example, it will be called `centralized-boilerplate.package` but you may want to replace this with a specific another package.
     ```
-    npm install centralized-boilerplate.something --save-dev
+    npm install centralized-boilerplate.package --save-dev
     ```
 1. Run the command to setup the boilerplate.
     ```
-    node ./node_modules/centralized-boilerplate.something/bin/run.js
+    node ./node_modules/centralized-boilerplate.package/bin/run.js
     ```
-3. If a boiler script wasn't automatically added by the previous step, you can it manually.
+3. If the boil script wasn't automatically added by the previous step, you can it manually.
     ```
     "scripts": {
-      "boil": "node ./node_modules/centralized-boilerplate.something/bin/run.js",
+      "boil": "node ./node_modules/centralized-boilerplate.package/bin/run.js",
       ...
     }
     ```
