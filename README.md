@@ -2,7 +2,7 @@ This project allows users to centrally control their boilerplate stuff. There ar
 
 #  To create your own
 
-1. Create an npm package. The recommended naming style is `@scope/centralized-x-boilerplate`. Where `x` is something like `package`, `service`, or something else. It depends how you conceptually group your packages. You might want to maintain multiple packages, depending on your groupings.
+1. Create an npm package. The recommended naming style is `centralized-boilerplate.x`. Where `x` is something useful to you, like `package`, `service`, or something else. It depends how you conceptually group your stuff. You might want to maintain multiple packages, depending on your groupings. If you have a private NPM organization, then you can of course do `@scope/centralized-boilerplate.x`
 1. Add this package as a dependency.
 1. Add an `assets` folder and put cool things in it. Note: files that begin with a period are not published by NPM, so you should not name them like as so, but this library allows you to rename files when they are copied.
 1. Create a file `./bin/boil`, put this code in there:
@@ -33,25 +33,32 @@ This project allows users to centrally control their boilerplate stuff. There ar
     ```
 1. Boom! You're done!
 
-# To use:
-
-1. Open the project you want to utilize this tool for.
-1. Add the package you've created above as a development dependency.
-1. Add a script to the `package.json` file.
+# How to use
+1. Add the package as a dev dependency. In the following example, it will be called `centralized-boilerplate.something` but you should replace this with a specific package.
     ```
-    {
-      "name": "..."
-      ...
-      ...
-      "scripts": {
-        "boil": "./node_modules/centralized-base-boilerplate-example/bin/boil"
-      }
+    npm install centralized-boilerplate.something --save-dev
+    ```
+1. Add the boil command in your package.
+    ```
+    "scripts": {
+      "boil": "node ./node_modules/centralized-boilerplate.something/bin/run.js"
     }
     ```
-1. If for some reason, you don't want to copy a particular file, create configuration file called `centralized-boilerplate.json` in the root directory.
+1. Run the command.
     ```
-    [
-      [ ".gitignore" ]
-    ]
+    npm run boil
     ```
-1. Boom! You're done!
+1. Scream in horror as computers are beginning to take your job.
+
+
+# Don't like a decision a maintainer made?
+Then sue them! Wait... no, that's not what the script says. *Ahem.* Then blacklist it. In the root folder of your project, you can create a file called `centralized-boilerplate.json` and add the following.
+```
+{
+  "blacklist": [
+    [ "whatever.txt" ]
+  ]
+}
+
+```
+Where `blacklist` is an array of filenames you do not want touched.
