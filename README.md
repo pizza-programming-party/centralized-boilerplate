@@ -31,7 +31,7 @@ This project allows users to centrally control their boilerplate stuff. There ar
       }
     }
     ```
-1. Boom! You're done!
+1. Boom! You're done! See here for an example: https://github.com/pizza-programming-party/centralized-boilerplate/tree/main/examples/base-provider
 
 # How to use
 1. Add the package as a dev dependency. In the following example, it will be called `centralized-boilerplate.something` but you should replace this with a specific package.
@@ -48,7 +48,7 @@ This project allows users to centrally control their boilerplate stuff. There ar
     ```
     npm run boil
     ```
-1. Scream in horror as computers are beginning to take your job.
+1. Scream in horror as computers are beginning to take your job. See here for an example: https://github.com/pizza-programming-party/centralized-boilerplate/tree/main/examples/base-consumer
 
 
 # Don't like a decision a maintainer made?
