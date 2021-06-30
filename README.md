@@ -15,18 +15,20 @@ If you're just getting familiar with this concept, then this is probably the rig
     ```
     npm install centralized-boilerplate.something --save-dev
     ```
-1. Add the boil command in your package.
+1. Run the command to setup the boilerplate.
+    ```
+    node ./node_modules/centralized-boilerplate.something/bin/run.js
+    ```
+3. If a boiler script wasn't automatically added by the previous step, you can it manually.
     ```
     "scripts": {
-      "boil": "node ./node_modules/centralized-boilerplate.something/bin/run.js"
+      "boil": "node ./node_modules/centralized-boilerplate.something/bin/run.js",
+      ...
     }
-    ```
-1. Run the command.
-    ```
-    npm run boil
     ```
 1. Scream in horror as computers are beginning to take your job. See here for an example: https://github.com/pizza-programming-party/centralized-boilerplate/tree/main/examples/base-consumer
 
+Whenever a new version of `centralized-boilerplate.something` package is published you can run the boil command to have the changes applied to your project.
 
 ## Don't like a decision a maintainer made?
 Then sue them! Wait... no, that's not what the script says. *Ahem.* Then blacklist it. In the root folder of your project, you can create a file called `centralized-boilerplate.json` and add the following.
