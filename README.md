@@ -9,6 +9,8 @@ Here is a list of cool, pre-made boilerplate:
 * [centralized-boilerplate.package](https://github.com/pizza-programming-party/centralized-boilerplate.package)
 
 # How to use
+If you're just getting familiar with this concept, then this is probably the right section for you.
+
 1. Add the package as a dev dependency. In the following example, it will be called `centralized-boilerplate.something` but you should replace this with a specific package.
     ```
     npm install centralized-boilerplate.something --save-dev
