@@ -1,4 +1,5 @@
 
+import * as child from 'child_process'
 import * as path from 'path'
 import * as fs from 'fs'
 import * as lodash from 'lodash'
@@ -53,7 +54,9 @@ function getConfiguration (
     return JSON.parse(read(fullPath))
   } catch (error) {
     console.log('No configuration found, none will be used.')
-    return []
+    return {
+      blacklist: []
+    }
   }
 }
 
@@ -148,4 +151,37 @@ function getPath (
     location.basePath,
     ...location.filepath
   )
+}
+
+export interface InstallCommand {
+  name: string
+  version: string
+  environment: 'development' | 'production'
+}
+
+export function install(packages: InstallCommand[]) {
+  const destinationPath = process.cwd()
+  const configuration = getConfiguration(destinationPath)
+
+  if (configuration.shouldInstall !== true) {
+    return
+  }
+  console.log('Running the install command, this is an experimental feature.')
+  console.log('You have opted into it via the centralized-package.json shouldInstall flag')
+  console.log('Packages are not checked for code injection trolly-boi stuff, whomp!')
+  console.log('')
+  console.log('So only use trusted packages, mkay.')
+
+  for (let i = 0; i < packages.length; i ++) {
+    const p = packages[i]
+    const modifier = p.environment === 'production' ? '--save' : '--save-dev'
+    const command = `npm install ${p.name}@${p.version} ${modifier}`
+    console.log(`Running "${command}"`)
+    try {
+      child.execSync(command)
+    } catch (error) {
+      console.log('An error happened while running', command)
+      console.log(error.messge)
+    }
+  }
 }

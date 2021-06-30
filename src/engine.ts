@@ -7,14 +7,9 @@ export interface MoveCommand {
   destination: string[]
 }
 
-export type Configuration =
-  | Configuration_v1
-  | Configuration_v2
-
-type Configuration_v1 = string[][]
-
-interface Configuration_v2 {
+export interface Configuration {
   blacklist: string[][]
+  shouldInstall?: boolean
 }
 
 export interface SubsystemMoveCommand {
@@ -60,12 +55,9 @@ function shouldCopy (
   configuration: Configuration,
   command: MoveCommand
 ): boolean {
-  const content = lodash.isArray(configuration)
-    ? configuration
-    : configuration.blacklist
-
-  for (let i = 0; i < content.length; i++) {
-    const entry = content[i]
+  const blacklist = configuration.blacklist
+  for (let i = 0; i < blacklist.length; i++) {
+    const entry = blacklist[i]
     if (lodash.isEqual(entry, command.destination)) {
       return false
     }

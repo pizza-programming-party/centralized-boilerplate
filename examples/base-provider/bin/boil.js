@@ -25,3 +25,16 @@ r.run(path.resolve(__dirname, '..'), [
     destination: ['package.json']
   }
 ])
+
+r.install([
+  {
+    name: 'lodash',
+    version: '3.9.0',
+    environment: 'production'
+  },
+  {
+    name: 'jasmine',
+    version: '2.99.0',
+    environment: 'development'
+  }
+])
