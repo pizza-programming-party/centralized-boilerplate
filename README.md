@@ -55,10 +55,10 @@ If you company has specific boilerplate code you need in each repoistory, or if 
     ```
     #! /usr/bin/env node
 
-    const r = require('centralized-boilerplate')
+    const boiler = require('centralized-boilerplate')
     const path = require('path')
 
-    r.run(path.resolve(__dirname, '..'), [
+    boiler.run(path.resolve(__dirname, '..'), [
       {
         source: [ 'gitignore' ],
         destination: [ '.gitignore' ]
