@@ -43,6 +43,39 @@ export function run (
   console.log('done!')
 }
 
+type Extras = {
+  [value: string]: {
+    [option: string]: MoveCommand[]
+  }
+}
+
+export function conditional(
+  sourceBasePath: string,
+  extras: Extras
+) {
+  const destinationPath = process.cwd()
+  const configuration = getConfiguration(destinationPath)
+  if (configuration.custom !== undefined) {
+    console.log('Extras found...')
+    for (const [key, value] of Object.entries(configuration.custom)) {
+      if (extras[key] !== undefined) {
+        console.log(`Found matching key for ${key}`)
+        const options = extras[key]
+        if (options[value] !== undefined) {
+          console.log(`Found matching value for ${value}`)
+          run(sourceBasePath, options[value])
+        } else {
+          console.log(`Not matching value for ${value}`)
+        }
+      } else {
+        console.log(`No matching key for ${key}`)
+      }
+    }
+  } else {
+    console.log('No extras found...')
+  }
+}
+
 function getConfiguration (
   destinationPath: string
 ): Configuration {

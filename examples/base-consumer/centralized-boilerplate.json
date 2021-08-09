@@ -2,5 +2,8 @@
   "blacklist": [
     [ "file2.txt" ]
   ],
-  "shouldInstall": true
+  "shouldInstall": true,
+  "custom": {
+    "ci": "github"
+  }
 }

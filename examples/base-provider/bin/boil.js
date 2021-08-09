@@ -3,7 +3,9 @@
 const r = require('centralized-boilerplate')
 const path = require('path')
 
-r.run(path.resolve(__dirname, '..'), [
+const base = path.resolve(__dirname, '..')
+
+r.run(base, [
   {
     action: 'full-text-replace',
     source: ['file0.txt'],
@@ -25,6 +27,25 @@ r.run(path.resolve(__dirname, '..'), [
     destination: ['package.json']
   }
 ])
+
+r.conditional(base, {
+  ci: {
+    github: [
+      {
+        action: 'full-text-replace',
+        source: ['github.txt'],
+        destination: ['github.txt']
+      }
+    ],
+    gitlab: [
+      {
+        action: 'full-text-replace',
+        source: ['gitlab.txt'],
+        destination: ['gitlab.txt']
+      }
+    ]
+  }
+})
 
 r.install([
   {

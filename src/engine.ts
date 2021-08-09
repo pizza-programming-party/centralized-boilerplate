@@ -10,6 +10,7 @@ export interface MoveCommand {
 export interface Configuration {
   blacklist: string[][]
   shouldInstall?: boolean
+  custom?: { [property: string]: string }
 }
 
 export interface SubsystemMoveCommand {
