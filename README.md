@@ -43,7 +43,7 @@ Then sue them! Wait... no, that's not what I wanted to say *Ahem.* Excuse me, th
 Where `blacklist` is an array of realative paths to specific files that you do not want touched.
 
 #  To create your own
-If you company has specific boilerplate code you need in each repoistory, or if there isn't a boilerplate template for your usecase yet, then these are the steps for you.
+If you need specific boilerplate code to be shared accross repoistories, or if there isn't a boilerplate template for your usecase yet, then these are the steps for you.
 
 1. Create an npm package. The recommended naming style is `centralized-boilerplate.x`. Where `x` is something useful to you, like `package`, `service`, or something else. It depends how you conceptually group your stuff. You might want to maintain multiple packages, depending on your groupings. If you have a private NPM organization, then you can of course do `@scope/centralized-boilerplate.x`
 1. Add package as a dependency.
