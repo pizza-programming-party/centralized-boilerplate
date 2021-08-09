@@ -27,10 +27,10 @@ If you're new to this concept, then this is probably the right section for you.
     ```
 1. Scream in horror as computers are beginning to take your job. Oh, the irony. See here for an example: https://github.com/pizza-programming-party/centralized-boilerplate/tree/main/examples/base-consumer
 
-Whenever a new version of `centralized-boilerplate.something` package is published you can run the boil command to have the changes applied to your project.
+Whenever a new version of `centralized-boilerplate.package` is published you can run the boil command to have the changes applied to your project.
 
 ## Don't like a decision a maintainer made?
-Then sue them! Wait... no, that's not what I wanted to say *Ahem.* Excuse me, then blacklist it. In the root folder of your project, you can create a file called `centralized-boilerplate.json` and add the following.
+Then sue them! Wait... no, that's not what I wanted to say *Ahem.* Excuse me, then blacklist it. In the root folder of your project, you can create a file called `centralized-boilerplate.json` and add the following:
 ```
 {
   "blacklist": [
